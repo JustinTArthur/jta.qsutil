@@ -28,6 +28,6 @@ setup(
     author_email='justinarthur@gmail.com',
     url='https://github.com/JustinTArthur/jta.qsutil',
     license='MIT',
-    namespace_packages=('jta',),
     packages=find_packages(exclude=('tests',)),
+    zip_safe=False
 )
