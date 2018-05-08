@@ -1,4 +1,4 @@
-# jta.qsutil - Complex Query String Processing
+# jta.qsutil - Complex URL Query String Processing
 ## Background
 The specifications that define the makeup of URLs are very flexible when it
 comes to what makes up the query string portion (the part after the `?`). Many
@@ -12,7 +12,13 @@ The goals of this project are:
  key or the key contains a sequence hint.
 * Remain standards-compliant with URI and URL RFC specs.
 * Provide an API similar to Python 3's standard urllib.
-* Be Python 2 and 3 compatible without relying on a compatibility library. 
+* Be Python 2 and 3 compatible without relying on a compatibility library.
+
+
+## Installation
+```bash
+pip install jta.qsutil
+```
 
 ## Parsing
 This library processes query strings, looking for hints of deeper structure.

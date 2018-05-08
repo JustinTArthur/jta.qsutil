@@ -6,14 +6,24 @@ from setuptools import setup, find_packages
 
 setup(
     name='jta.qsutil',
-    version='0.1.0',
+    version='0.1.1',
     description="A library for parsing URL query strings into heterogeneously "
                 "shaped dicts.",
-    long_description="Produces dicts from querystrings that are "
-                     "ampersand-delimited values or key=value pairs. The "
-                     "parser will pick up hints from key names to establish the"
-                     "shape of the dict, allowing for multiple dict depths and "
-                     "sequences.",
+    long_description="""The specifications that define the makeup of URLs are
+very flexible when it comes to what makes up the query string portion (the part
+after the `?`). Many web services have taken the initial recommendation of using
+`key=value` pairs to another level by allowing complex structures to be
+represented for a sacrifice in parsing performance.
+
+The goals of this project are:
+* Be able to process sequence and sub-mapping hints in URL query string keys.
+* Only shape values into sequences if there are multiple occurrences of the same
+ key or the key contains a sequence hint.
+* Remain standards-compliant with URI and URL RFC specs.
+* Provide an API similar to Python 3's standard urllib.
+* Be Python 2 and 3 compatible without relying on a compatibility library.
+""",
+    long_description_content_type='text/markdown',
     classifiers=(
         "Programming Language :: Python",
         "Intended Audience :: Developers",
