@@ -4,7 +4,7 @@ from urllib.parse import parse_qsl
 NAME_PATTERN = r'([^[\]]+)(?:((?:\[[^[\]]+\])+)?(\[\])?)?$'
 PATH_ELEMENTS_PATTERN = r'(?:\[(.+?)\])'
 
-_name_format = re.compile(NAME_PATTERN)
+_match_name_format = re.compile(NAME_PATTERN).match
 _parse_path_elements = re.compile(PATH_ELEMENTS_PATTERN).findall
 
 
@@ -15,7 +15,7 @@ def parse_qs(qs, keep_blank_values=False, strict_parsing=False,
                       encoding=encoding, errors=errors)
 
     for name, value in pairs:
-        name_match = _name_format.match(name)
+        name_match = _match_name_format(name)
         if not name_match:
             raise ValueError('Query string attribute in unknown format: %s' % name)
         base_name, path_elements, array_hint = name_match.groups()
@@ -43,4 +43,3 @@ def parse_qs(qs, keep_blank_values=False, strict_parsing=False,
             path[final_element] = [value] if array_hint else value
 
     return result
-
