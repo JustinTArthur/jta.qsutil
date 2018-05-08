@@ -14,6 +14,11 @@ def test_array_brackets():
     assert result == {'a': ['this', 'that'], 'b': 'something'}
 
 
+def test_key_only_items():
+    result = parse_qs('a', keep_blank_values=True)
+    assert result == {'a': ''}
+
+
 def test_single_array_item():
     result = parse_qs('a[]=this')
     assert result == {'a': ['this']}
