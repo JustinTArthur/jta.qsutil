@@ -17,6 +17,8 @@ def test_array_brackets():
 def test_key_only_items():
     result = parse_qs('a', keep_blank_values=True)
     assert result == {'a': ''}
+    result = parse_qs('a&b', keep_blank_values=True)
+    assert result == {'a': '', 'b': ''}
 
 
 def test_single_array_item():
@@ -33,3 +35,4 @@ def test_associative_array_brackets():
 
     result = parse_qs('a[b]=this&a[b]=that')
     assert result == {'a': {'b': ['this', 'that']}}
+
